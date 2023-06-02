@@ -1,9 +1,6 @@
 package com.bol.mancala.exceptions;
 
-import com.bol.mancala.exceptions.types.EmptyPitException;
-import com.bol.mancala.exceptions.types.GameNotFoundException;
-import com.bol.mancala.exceptions.types.IllegalGameStateException;
-import com.bol.mancala.exceptions.types.IncorrectTurnException;
+import com.bol.mancala.exceptions.types.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -32,5 +29,11 @@ public class GameExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<FailureResponse> handleIncorrectTurnException(IncorrectTurnException e) {
         return ResponseEntity.badRequest()
                 .body(new FailureResponse("It is %s's turn.".formatted(e.getTurn())));
+    }
+
+    @ExceptionHandler(InvalidPitException.class)
+    public ResponseEntity<FailureResponse> handleInvalidPitException() {
+        return ResponseEntity.badRequest()
+                .body(new FailureResponse("Start from big pit (store) is illegal."));
     }
 }

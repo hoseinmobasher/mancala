@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
@@ -19,6 +18,7 @@ public class Pit {
         return index <= Player.PLAYER_1.getStore() ? Player.PLAYER_1 : Player.PLAYER_2;
     }
 
+    @JsonIgnore
     public boolean isStore() {
         return index == Player.PLAYER_1.getStore() || index == Player.PLAYER_2.getStore();
     }

@@ -6,6 +6,7 @@ import com.bol.mancala.domain.enumeration.GameState;
 import com.bol.mancala.exceptions.types.EmptyPitException;
 import com.bol.mancala.exceptions.types.IllegalGameStateException;
 import com.bol.mancala.exceptions.types.IncorrectTurnException;
+import com.bol.mancala.exceptions.types.InvalidPitException;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
@@ -17,6 +18,10 @@ public class PrePickExecutor extends Executor<Integer> {
         }
 
         var pit = game.getBoard().getPit(selectedPit);
+        if (pit.isStore()) {
+            throw new InvalidPitException();
+        }
+
         if (!game.getTurn().equals(pit.getOwner())) {
             throw new IncorrectTurnException(game.getTurn());
         }
