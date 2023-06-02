@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Mancala
+
+logging:
+  level:
+    com:
+      bol: debug
