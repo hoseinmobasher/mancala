@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PrePickExecutorTest {
-    private static PrePickExecutor executor;
+public class PickValidatorExecutorTest {
+    private static PickValidatorExecutor executor;
 
     @BeforeAll
     public static void setUp() {
-        executor = new PrePickExecutor();
+        executor = new PickValidatorExecutor();
     }
 
     @Test

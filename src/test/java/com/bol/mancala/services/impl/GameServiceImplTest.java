@@ -32,7 +32,7 @@ public class GameServiceImplTest {
     private GameServiceImpl gameService;
 
     @Test
-    public void create_IsCalled_ReturnAGameEqualsWithPersisted() {
+    public void testCreateGame() {
         var game = new Game();
         when(gameRepository.saveOrUpdate(any())).thenReturn(game);
 
@@ -40,13 +40,13 @@ public class GameServiceImplTest {
     }
 
     @Test
-    public void pick_ThereIsNoGameWithGivenId_ThrowGameNotFoundException() {
+    public void testPickWhenGameIsNotFound() {
         when(gameRepository.findById(any())).thenReturn(Optional.empty());
         assertThrows(GameNotFoundException.class, () -> gameService.pick(UUID.randomUUID(), 0));
     }
 
     @Test
-    public void pick_IdIsGiven_ReturnGameWithSameId() {
+    public void testPickWhenGameExists() {
         var game = new Game();
         when(gameRepository.findById(any())).thenReturn(Optional.of(game));
         when(gameRepository.saveOrUpdate(any())).thenReturn(game);

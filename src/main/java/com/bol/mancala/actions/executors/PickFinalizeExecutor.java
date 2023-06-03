@@ -8,7 +8,7 @@ import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class PostPickProcessor extends Executor<Integer> {
+public class PickFinalizeExecutor extends Executor<Integer> {
     @Override
     public void executeInternal(Game game, Integer selectedPit) {
         int p1Count = game.getBoard().getPits(Player.PLAYER_1).stream().map(Pit::getStones).reduce(0, Integer::sum);

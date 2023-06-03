@@ -10,9 +10,9 @@ public class PickChainExecutor {
     private final Executor<Integer> rootExecutor;
 
     public PickChainExecutor() {
-        rootExecutor = new PrePickExecutor();
-        rootExecutor.next(new PickExecutor())
-                .next(new PostPickProcessor())
+        rootExecutor = new PickValidatorExecutor();
+        rootExecutor.next(new PickCommandExecutor())
+                .next(new PickFinalizeExecutor())
                 .next(new BoardPrinterExecutor());
     }
 

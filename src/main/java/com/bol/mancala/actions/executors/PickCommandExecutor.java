@@ -8,7 +8,7 @@ import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class PickExecutor extends Executor<Integer> {
+public class PickCommandExecutor extends Executor<Integer> {
     @Override
     public void executeInternal(Game game, Integer selectedPit) {
         var lastIndex = sowStones(game, selectedPit);
