@@ -21,7 +21,7 @@ public class PickValidatorExecutorTest {
     }
 
     @Test
-    public void executeInternal_WhenGameIsFinished_ThrowIllegalGameStateException() {
+    public void testExecuteInternalWhenGameIsFinished() {
         var game = new Game();
         game.setState(GameState.FINISHED);
 
@@ -29,7 +29,7 @@ public class PickValidatorExecutorTest {
     }
 
     @Test
-    public void executeInternal_WhenTurnIsNotConsidered_ThrowIncorrectTurnException() {
+    public void testExecuteInternalWhenTurnIsNotConsidered() {
         var game = new Game();
         game.setTurn(Player.PLAYER_1);
 
@@ -37,7 +37,7 @@ public class PickValidatorExecutorTest {
     }
 
     @Test
-    public void executeInternal_WhenSelectedPitIsEmpty_ThrowEmptyPitException() {
+    public void testExecuteInternalWhenSelectedPitIsEmpty() {
         var game = new Game();
         game.getBoard().getPit(0).setStones(0);
 
@@ -45,7 +45,7 @@ public class PickValidatorExecutorTest {
     }
 
     @Test
-    public void executeInternal_WhenABigPitIsSelected_ThrowInvalidPitException() {
+    public void testExecuteInternalWhenABigPitIsSelected() {
         var game = new Game();
 
         assertThrows(InvalidPitException.class, () -> executor.executeInternal(game, Player.PLAYER_1.getStore()));

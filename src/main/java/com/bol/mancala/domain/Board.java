@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 public class Board {
     public static final int PIT_COUNT = 6;
-    public static final int STONE_COUNT = 4;
+    public static final int STONE_COUNT = 6;
     public static final int PIT_TOTAL_COUNT = PIT_COUNT * 2 + 2;
 
     private final List<Pit> pits;

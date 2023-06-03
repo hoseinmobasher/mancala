@@ -28,7 +28,7 @@ public class GameControllerTest {
     private GameService gameService;
 
     @Test
-    public void gameApi_WhenIsCalled_StatusIsCreatedAndContentIsSetWithValidValues() throws Exception {
+    public void testGameApi() throws Exception {
         ResultActions result = mockMvc.perform(post("/game"))
                 .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty())
@@ -46,7 +46,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void pickApi_GivenValidId_StatusIsOkAndReturnGameWithSameId() throws Exception {
+    public void testPickApiWhenIdIsValid() throws Exception {
         var game = gameService.create();
 
         mockMvc.perform(put("/game/" + game.getId().toString() + "/pick/1"))
@@ -55,7 +55,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void pickApi_GivenInvalidId_StatusIsNotFound() throws Exception {
+    public void testPickApiWhenIdIsNotValid() throws Exception {
         mockMvc.perform(put("/game/" + UUID.randomUUID().toString() + "/pick/1"))
                 .andExpect(status().isNotFound());
     }

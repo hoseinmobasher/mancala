@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     @Test
-    public void constructor_GameIsCreated_IdIsNotNullAndBoardIsNotNullAndStateIsInProgressAndTurnIsPlayer1AndWinnerIsNull() {
+    public void testConstructGame() {
         var game = new Game();
         assertNotNull(game.getId());
         assertNotNull(game.getBoard());
@@ -18,7 +18,7 @@ public class GameTest {
     }
 
     @Test
-    public void equals_GivenTwoGameWithDifferentId_ReturnsFalse() {
+    public void testEqualsWithTwoGameWithDifferentId() {
         var game1 = new Game();
         var game2 = new Game();
 
@@ -26,7 +26,7 @@ public class GameTest {
     }
 
     @Test
-    public void hashcode_GivenTwoGameWithDifferentId_ReturnsDifferentHashCodes() {
+    public void testHashcodeWithTwoGameWithDifferentId() {
         var game1 = new Game();
         var game2 = new Game();
 

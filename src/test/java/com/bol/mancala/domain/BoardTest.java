@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BoardTest {
     @Test
-    public void constructor_BoardIsCreated_PitsSizeIsPitTotalCountAndPitsAreFilledWithZeroOrStoneCount() {
+    public void testConstructBoard() {
         var board = new Board();
         assertEquals(board.getPits().size(), Board.PIT_TOTAL_COUNT);
         assertEquals(board.getPits().stream()
@@ -16,13 +16,13 @@ public class BoardTest {
     }
 
     @Test
-    void getPit_WhenGivenIndexGreaterThanPitTotalCount_ThrowsIndexOutOfBoundException() {
+    void testGetPitWhenGivenIndexGreaterThanPitTotalCount() {
         var board = new Board();
         assertThrows(IndexOutOfBoundsException.class, () -> board.getPit(Board.PIT_TOTAL_COUNT + 1));
     }
 
     @Test
-    void getPits_BoardIsCreated_ReturnsAListWithSizeOfPitTotalCount() {
+    void testGetPitsWhenBoardIsCreated() {
         var board = new Board();
         assertEquals(board.getPits().size(), Board.PIT_TOTAL_COUNT);
     }

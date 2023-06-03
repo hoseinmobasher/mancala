@@ -10,31 +10,31 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PitTest {
     @Test
-    public void getOwner_IndexIsLessThanPlayer1Store_ReturnsPlayer1() {
+    public void testGetOwnerWhenIndexBelongsToPlayer1() {
         var pit = new Pit(Player.PLAYER_1.getStore() - 1, STONE_COUNT);
         assertEquals(pit.getOwner(), Player.PLAYER_1);
     }
 
     @Test
-    public void getOwner_IndexIsMoreThanPlayer1Store_ReturnsPlayer1() {
+    public void testGetOwnerWhenIndexBelongsToPlayer2() {
         var pit = new Pit(Player.PLAYER_1.getStore() + 1, STONE_COUNT);
         assertEquals(pit.getOwner(), Player.PLAYER_2);
     }
 
     @Test
-    public void isStore_IndexIsPitTotalCountMinusOne_ReturnTrue() {
+    public void testIsStoreWhenIndexIsPitTotalCountMinusOne() {
         var pit = new Pit(PIT_TOTAL_COUNT - 1, STONE_COUNT);
         assertTrue(pit.isStore());
     }
 
     @Test
-    public void isStore_IndexIsPitTotalCountDividedByTwoMinusOne_ReturnTrue() {
+    public void testIsStoreWhenIndexIsPitTotalCountDividedByTwoMinusOne() {
         var pit = new Pit(PIT_TOTAL_COUNT / 2 - 1, STONE_COUNT);
         assertTrue(pit.isStore());
     }
 
     @Test
-    public void toString_StoneIsStoneCount_ReturnsStringFormatOfStones() {
+    public void testToStringWhenStoneIsStoneCount() {
         var pit = new Pit(1, STONE_COUNT);
         assertEquals(pit.toString(), Integer.toString(STONE_COUNT));
     }
