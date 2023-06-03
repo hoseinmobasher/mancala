@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class BoardTest {
     @Test
-    public void whenBoardIsCreated_PitsSizeIsPitTotalCountAndPitsAreFilledWithZeroOrStoneCount() {
+    public void constructor_BoardIsCreated_PitsSizeIsPitTotalCountAndPitsAreFilledWithZeroOrStoneCount() {
         var board = new Board();
         assertEquals(board.getPits().size(), Board.PIT_TOTAL_COUNT);
         assertEquals(board.getPits().stream()
@@ -22,7 +22,7 @@ public class BoardTest {
     }
 
     @Test
-    void getPits_ReturnsAListWithSizeOfPitTotalCount() {
+    void getPits_BoardIsCreated_ReturnsAListWithSizeOfPitTotalCount() {
         var board = new Board();
         assertEquals(board.getPits().size(), Board.PIT_TOTAL_COUNT);
     }

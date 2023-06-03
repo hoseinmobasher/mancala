@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GameTest {
     @Test
-    public void whenGameIsCreated_IdIsNotNullAndBoardIsNotNullAndStateIsInProgressAndTurnIsPlayer1AndWinnerIsNull() {
+    public void constructor_GameIsCreated_IdIsNotNullAndBoardIsNotNullAndStateIsInProgressAndTurnIsPlayer1AndWinnerIsNull() {
         var game = new Game();
         assertNotNull(game.getId());
         assertNotNull(game.getBoard());

@@ -17,7 +17,7 @@ public class InMemoryGameRepositoryTest {
     private InMemoryGameRepository repository;
 
     @Test
-    void saveOrUpdate_WhenEntityIsSaved_SavedEntityIsEqualsToGivenEntity() {
+    void saveOrUpdate_EntityIsSaved_SavedEntityIsEqualsToGivenEntity() {
         var entity = new Game();
         var savedEntity = repository.saveOrUpdate(entity);
 
@@ -25,7 +25,7 @@ public class InMemoryGameRepositoryTest {
     }
 
     @Test
-    void findById_WhenEntityExists_ReturnEntityWithValidId() {
+    void findById_EntityExists_ReturnEntityWithValidId() {
         Game savedEntity = repository.saveOrUpdate(new Game());
         Optional<Game> queriedEntity = repository.findById(savedEntity.getId());
 
@@ -34,7 +34,7 @@ public class InMemoryGameRepositoryTest {
     }
 
     @Test
-    void findById_WhenEntityDoesNotExist_ReturnOptionalEmpty() {
+    void findById_EntityDoesNotExist_ReturnOptionalEmpty() {
         assertEquals(repository.findById(UUID.randomUUID()), Optional.empty());
     }
 }
