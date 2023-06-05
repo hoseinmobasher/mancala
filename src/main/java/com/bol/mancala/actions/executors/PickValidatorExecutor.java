@@ -10,9 +10,9 @@ import com.bol.mancala.exceptions.types.InvalidPitException;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class PickValidatorExecutor extends Executor<Integer> {
+public class PickValidatorExecutor implements Executor<Integer> {
     @Override
-    public void executeInternal(Game game, Integer selectedPit) {
+    public void execute(Game game, Integer selectedPit) {
         if (GameState.FINISHED == game.getState()) {
             throw new IllegalGameStateException(game.getState());
         }

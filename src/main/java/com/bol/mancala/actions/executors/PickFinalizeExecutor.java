@@ -8,9 +8,9 @@ import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class PickFinalizeExecutor extends Executor<Integer> {
+public class PickFinalizeExecutor implements Executor<Integer> {
     @Override
-    public void executeInternal(Game game, Integer selectedPit) {
+    public void execute(Game game, Integer selectedPit) {
         int p1Count = game.getBoard().getPits(Player.PLAYER_1).stream().map(Pit::getStones).reduce(0, Integer::sum);
         int p2Count = game.getBoard().getPits(Player.PLAYER_2).stream().map(Pit::getStones).reduce(0, Integer::sum);
 
@@ -40,7 +40,11 @@ public class PickFinalizeExecutor extends Executor<Integer> {
             game.setWinner(Player.PLAYER_2);
         }
 
-        log.debug("Winner is determined: {}", game.getWinner());
+        if (game.getWinner() != null) {
+            log.debug("Winner is determined: {}", game.getWinner());
+        } else {
+            log.debug("Draw match.");
+        }
     }
 
     private void closeGame(Game game) {

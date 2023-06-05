@@ -1,4 +1,4 @@
-package com.bol.mancala.actions;
+package com.bol.mancala.actions.executors;
 
 import com.bol.mancala.actions.base.Executor;
 import com.bol.mancala.domain.Game;
@@ -8,9 +8,9 @@ import lombok.extern.log4j.Log4j2;
 import static com.bol.mancala.domain.Board.PIT_TOTAL_COUNT;
 
 @Log4j2
-public class BoardPrinterExecutor extends Executor<Integer> {
+public class BoardPrinterExecutor implements Executor<Integer> {
     @Override
-    public void executeInternal(Game game, Integer selectedPit) {
+    public void execute(Game game, Integer selectedPit) {
         log.info("=================================================");
 
         StringBuilder player2Row = new StringBuilder();
