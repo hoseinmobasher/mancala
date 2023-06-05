@@ -35,7 +35,7 @@ public class GameControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.state").value("IN_PROGRESS"));
 
         for (var index = 0; index < Board.PIT_TOTAL_COUNT; index++) {
-            if (index == Player.PLAYER_2.getStore() || index == Player.PLAYER_1.getStore()) {
+            if (index == Player.PLAYER_2.getBigPit() || index == Player.PLAYER_1.getBigPit()) {
                 result.andExpect(MockMvcResultMatchers.jsonPath("$.board.pits[" + index + "].index").value(index));
                 result.andExpect(MockMvcResultMatchers.jsonPath("$.board.pits[" + index + "].stones").value(0));
             } else {

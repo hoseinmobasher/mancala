@@ -25,8 +25,8 @@ public class PickCommandExecutor implements Executor<Integer> {
         while (stones > 0) {
             index = ++index % Board.PIT_TOTAL_COUNT;
             var next = game.getBoard().getPit(index);
-            if (pit.getOwner() != next.getOwner() && next.isStore()) {
-                log.debug("Opponent store[{}] is ignored.", next.getIndex());
+            if (pit.getOwner() != next.getOwner() && next.isBigPit()) {
+                log.debug("Opponent big pit[{}] is ignored.", next.getIndex());
                 continue;
             }
 
@@ -39,7 +39,7 @@ public class PickCommandExecutor implements Executor<Integer> {
 
     private void captureStones(Game game, int lastIndex) {
         var lastPit = game.getBoard().getPit(lastIndex);
-        if (!lastPit.isStore()
+        if (!lastPit.isBigPit()
                 && lastPit.getOwner() == game.getTurn()
                 && lastPit.getStones() == 1) {
             var oppositePit = game.getBoard().getPit(Board.PIT_COUNT * 2 - lastIndex);
@@ -47,8 +47,8 @@ public class PickCommandExecutor implements Executor<Integer> {
                 log.debug("{} is going to capture {} stones from {}.", game.getTurn(),
                         oppositePit.getStones(), oppositePit.getOwner());
 
-                Pit storePit = game.getBoard().getPit(game.getTurn().getStore());
-                storePit.setStones(storePit.getStones() + lastPit.getStones() + oppositePit.getStones());
+                Pit bigPit = game.getBoard().getPit(game.getTurn().getBigPit());
+                bigPit.setStones(bigPit.getStones() + lastPit.getStones() + oppositePit.getStones());
 
                 lastPit.setStones(0);
                 oppositePit.setStones(0);
@@ -59,7 +59,7 @@ public class PickCommandExecutor implements Executor<Integer> {
 
     private void changeTurn(Game game, int lastIndex) {
         var lastPit = game.getBoard().getPit(lastIndex);
-        if (lastPit.isStore() && game.getTurn() == lastPit.getOwner()) {
+        if (lastPit.isBigPit() && game.getTurn() == lastPit.getOwner()) {
             log.debug("{} got a free turn.", game.getTurn());
             return;
         }

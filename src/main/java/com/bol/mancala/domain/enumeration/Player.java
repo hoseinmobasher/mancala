@@ -6,13 +6,13 @@ public enum Player {
     PLAYER_1(PIT_TOTAL_COUNT / 2 - 1),
     PLAYER_2(PIT_TOTAL_COUNT - 1);
 
-    private final int store;
+    private final int bigPit;
 
-    Player(int store) {
-        this.store = store;
+    Player(int bigPit) {
+        this.bigPit = bigPit;
     }
 
-    public int getStore() {
-        return store;
+    public int getBigPit() {
+        return bigPit;
     }
 }

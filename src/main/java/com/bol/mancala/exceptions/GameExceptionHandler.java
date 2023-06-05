@@ -34,6 +34,6 @@ public class GameExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(InvalidPitException.class)
     public ResponseEntity<FailureResponse> handleInvalidPitException() {
         return ResponseEntity.badRequest()
-                .body(new FailureResponse("Start from big pit (store) is illegal."));
+                .body(new FailureResponse("Start from big pit is illegal."));
     }
 }

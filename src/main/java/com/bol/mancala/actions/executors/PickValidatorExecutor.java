@@ -18,7 +18,7 @@ public class PickValidatorExecutor implements Executor<Integer> {
         }
 
         var pit = game.getBoard().getPit(selectedPit);
-        if (pit.isStore()) {
+        if (pit.isBigPit()) {
             throw new InvalidPitException();
         }
 

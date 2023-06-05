@@ -25,7 +25,7 @@ public class PickValidatorExecutorTest {
         var game = new Game();
         game.setState(GameState.FINISHED);
 
-        assertThrows(IllegalGameStateException.class, () -> executor.executeInternal(game, 0));
+        assertThrows(IllegalGameStateException.class, () -> executor.execute(game, 0));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class PickValidatorExecutorTest {
         var game = new Game();
         game.setTurn(Player.PLAYER_1);
 
-        assertThrows(IncorrectTurnException.class, () -> executor.executeInternal(game, Player.PLAYER_2.getStore() - 1));
+        assertThrows(IncorrectTurnException.class, () -> executor.execute(game, Player.PLAYER_2.getBigPit() - 1));
     }
 
     @Test
@@ -41,14 +41,14 @@ public class PickValidatorExecutorTest {
         var game = new Game();
         game.getBoard().getPit(0).setStones(0);
 
-        assertThrows(EmptyPitException.class, () -> executor.executeInternal(game, 0));
+        assertThrows(EmptyPitException.class, () -> executor.execute(game, 0));
     }
 
     @Test
     public void testExecuteInternalWhenABigPitIsSelected() {
         var game = new Game();
 
-        assertThrows(InvalidPitException.class, () -> executor.executeInternal(game, Player.PLAYER_1.getStore()));
-        assertThrows(InvalidPitException.class, () -> executor.executeInternal(game, Player.PLAYER_2.getStore()));
+        assertThrows(InvalidPitException.class, () -> executor.execute(game, Player.PLAYER_1.getBigPit()));
+        assertThrows(InvalidPitException.class, () -> executor.execute(game, Player.PLAYER_2.getBigPit()));
     }
 }

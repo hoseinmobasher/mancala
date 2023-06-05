@@ -15,12 +15,12 @@ public class Pit {
 
     @JsonIgnore
     public Player getOwner() {
-        return index <= Player.PLAYER_1.getStore() ? Player.PLAYER_1 : Player.PLAYER_2;
+        return index <= Player.PLAYER_1.getBigPit() ? Player.PLAYER_1 : Player.PLAYER_2;
     }
 
     @JsonIgnore
-    public boolean isStore() {
-        return index == Player.PLAYER_1.getStore() || index == Player.PLAYER_2.getStore();
+    public boolean isBigPit() {
+        return index == Player.PLAYER_1.getBigPit() || index == Player.PLAYER_2.getBigPit();
     }
 
     @Override

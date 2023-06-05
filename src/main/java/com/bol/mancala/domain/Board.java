@@ -17,7 +17,7 @@ public class Board {
     public Board() {
         this.pits = new ArrayList<>();
         for (var index = 0; index < PIT_TOTAL_COUNT; index++) {
-            if (index == Player.PLAYER_1.getStore() || index == Player.PLAYER_2.getStore()) {
+            if (index == Player.PLAYER_1.getBigPit() || index == Player.PLAYER_2.getBigPit()) {
                 pits.add(new Pit(index, 0));
             } else {
                 pits.add(new Pit(index, STONE_COUNT));
@@ -30,6 +30,6 @@ public class Board {
     }
 
     public List<Pit> getPits(Player player) {
-        return pits.stream().skip(player.getStore() - PIT_COUNT).limit(PIT_COUNT).toList();
+        return pits.stream().skip(player.getBigPit() - PIT_COUNT).limit(PIT_COUNT).toList();
     }
 }

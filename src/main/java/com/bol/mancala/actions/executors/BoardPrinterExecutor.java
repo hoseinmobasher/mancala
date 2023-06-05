@@ -15,7 +15,7 @@ public class BoardPrinterExecutor implements Executor<Integer> {
 
         StringBuilder player2Row = new StringBuilder();
         player2Row.append("PLAYER_2");
-        for (var index = Player.PLAYER_2.getStore(); index >= PIT_TOTAL_COUNT / 2; index--) {
+        for (var index = Player.PLAYER_2.getBigPit(); index >= PIT_TOTAL_COUNT / 2; index--) {
             player2Row.append("\t");
             if (index == PIT_TOTAL_COUNT - 1) {
                 player2Row.append("[ ");
@@ -32,14 +32,14 @@ public class BoardPrinterExecutor implements Executor<Integer> {
 
         StringBuilder player1Row = new StringBuilder();
         player1Row.append("PLAYER_1").append("\t\t");
-        for (var index = 0; index <= Player.PLAYER_1.getStore(); index++) {
+        for (var index = 0; index <= Player.PLAYER_1.getBigPit(); index++) {
             player1Row.append("\t");
-            if (index == Player.PLAYER_1.getStore()) {
+            if (index == Player.PLAYER_1.getBigPit()) {
                 player1Row.append("[ ");
             }
 
             player1Row.append(game.getBoard().getPit(index));
-            if (index == Player.PLAYER_1.getStore()) {
+            if (index == Player.PLAYER_1.getBigPit()) {
                 player1Row.append("]");
             }
         }

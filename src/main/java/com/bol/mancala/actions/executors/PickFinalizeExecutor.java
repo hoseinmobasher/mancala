@@ -16,13 +16,13 @@ public class PickFinalizeExecutor implements Executor<Integer> {
 
         if (p1Count == 0 || p2Count == 0) {
             if (p1Count == 0) {
-                Pit p2Store = game.getBoard().getPit(Player.PLAYER_2.getStore());
-                p2Store.setStones(p2Store.getStones() + p2Count);
+                Pit p2BigPit = game.getBoard().getPit(Player.PLAYER_2.getBigPit());
+                p2BigPit.setStones(p2BigPit.getStones() + p2Count);
             }
 
             if (p2Count == 0) {
-                Pit p1Store = game.getBoard().getPit(Player.PLAYER_1.getStore());
-                p1Store.setStones(p1Store.getStones() + p1Count);
+                Pit p2BigPit = game.getBoard().getPit(Player.PLAYER_1.getBigPit());
+                p2BigPit.setStones(p2BigPit.getStones() + p1Count);
             }
 
             determineWinner(game);
@@ -31,8 +31,8 @@ public class PickFinalizeExecutor implements Executor<Integer> {
     }
 
     private void determineWinner(Game game) {
-        int p1Stones = game.getBoard().getPit(Player.PLAYER_1.getStore()).getStones();
-        int p2Stones = game.getBoard().getPit(Player.PLAYER_2.getStore()).getStones();
+        int p1Stones = game.getBoard().getPit(Player.PLAYER_1.getBigPit()).getStones();
+        int p2Stones = game.getBoard().getPit(Player.PLAYER_2.getBigPit()).getStones();
 
         if (p1Stones > p2Stones) {
             game.setWinner(Player.PLAYER_1);
@@ -49,7 +49,7 @@ public class PickFinalizeExecutor implements Executor<Integer> {
 
     private void closeGame(Game game) {
         for (var index = 0; index < Board.PIT_TOTAL_COUNT; index++) {
-            if (index == Player.PLAYER_1.getStore() || index == Player.PLAYER_2.getStore()) {
+            if (index == Player.PLAYER_1.getBigPit() || index == Player.PLAYER_2.getBigPit()) {
                 continue;
             }
 
