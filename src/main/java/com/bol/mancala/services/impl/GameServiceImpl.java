@@ -19,12 +19,20 @@ public class GameServiceImpl implements GameService {
         this.pickChainExecutor = pickChainExecutor;
     }
 
+    /**
+     *
+     * @return This method returns an object from Game.
+     */
     @Override
     public Game create() {
         var game = new Game();
         return repository.saveOrUpdate(game);
     }
 
+    /**
+     * @param id          ID for corresponding game.
+     * @param selectedPit Pit is chosen to apply the pick action.
+     */
     @Override
     public Game pick(UUID id, int selectedPit) {
         var game = repository.findById(id).orElseThrow(GameNotFoundException::new);

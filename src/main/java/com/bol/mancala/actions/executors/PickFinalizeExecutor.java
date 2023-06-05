@@ -4,6 +4,7 @@ import com.bol.mancala.actions.base.Executor;
 import com.bol.mancala.domain.Board;
 import com.bol.mancala.domain.Game;
 import com.bol.mancala.domain.Pit;
+import com.bol.mancala.domain.enumeration.GameState;
 import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
@@ -25,6 +26,8 @@ public class PickFinalizeExecutor implements Executor<Integer> {
                 p2BigPit.setStones(p2BigPit.getStones() + p1Count);
             }
 
+
+            game.setState(GameState.FINISHED);
             determineWinner(game);
             closeGame(game);
         }
