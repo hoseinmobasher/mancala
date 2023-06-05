@@ -9,10 +9,11 @@ import com.bol.mancala.domain.Game;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class PickChainExecutor {
-    private final LinkedList<Executor<Integer>> executors;
+    private final List<Executor<Integer>> executors;
 
     public PickChainExecutor() {
         executors = new LinkedList<>();
