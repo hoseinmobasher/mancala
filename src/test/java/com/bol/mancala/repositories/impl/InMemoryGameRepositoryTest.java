@@ -26,8 +26,8 @@ public class InMemoryGameRepositoryTest {
 
     @Test
     void testFindByIdWhenEntityExists() {
-        Game savedEntity = repository.saveOrUpdate(new Game());
-        Optional<Game> queriedEntity = repository.findById(savedEntity.getId());
+        var savedEntity = repository.saveOrUpdate(new Game());
+        var queriedEntity = repository.findById(savedEntity.getId());
 
         assertNotEquals(queriedEntity, Optional.empty());
         assertEquals(savedEntity, queriedEntity.get());

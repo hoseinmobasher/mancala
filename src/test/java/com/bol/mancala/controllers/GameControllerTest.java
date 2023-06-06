@@ -30,7 +30,7 @@ public class GameControllerTest {
 
     @Test
     public void testGameApi() throws Exception {
-        ResultActions result = mockMvc.perform(post("/game"))
+        var result = mockMvc.perform(post("/game"))
                 .andExpect(status().isCreated())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").isNotEmpty())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.state").value("IN_PROGRESS"));

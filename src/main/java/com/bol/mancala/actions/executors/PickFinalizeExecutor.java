@@ -12,17 +12,17 @@ import lombok.extern.log4j.Log4j2;
 public class PickFinalizeExecutor implements Executor<Integer> {
     @Override
     public void execute(Game game, Integer selectedPit) {
-        int p1Count = game.getBoard().getPits(Player.PLAYER_1).stream().map(Pit::getStones).reduce(0, Integer::sum);
-        int p2Count = game.getBoard().getPits(Player.PLAYER_2).stream().map(Pit::getStones).reduce(0, Integer::sum);
+        var p1Count = game.getBoard().getPits(Player.PLAYER_1).stream().map(Pit::getStones).reduce(0, Integer::sum);
+        var p2Count = game.getBoard().getPits(Player.PLAYER_2).stream().map(Pit::getStones).reduce(0, Integer::sum);
 
         if (p1Count == 0 || p2Count == 0) {
             if (p1Count == 0) {
-                Pit p2BigPit = game.getBoard().getPit(Player.PLAYER_2.getBigPit());
+                var p2BigPit = game.getBoard().getPit(Player.PLAYER_2.getBigPit());
                 p2BigPit.setStones(p2BigPit.getStones() + p2Count);
             }
 
             if (p2Count == 0) {
-                Pit p2BigPit = game.getBoard().getPit(Player.PLAYER_1.getBigPit());
+                var p2BigPit = game.getBoard().getPit(Player.PLAYER_1.getBigPit());
                 p2BigPit.setStones(p2BigPit.getStones() + p1Count);
             }
 
@@ -34,8 +34,8 @@ public class PickFinalizeExecutor implements Executor<Integer> {
     }
 
     private void determineWinner(Game game) {
-        int p1Stones = game.getBoard().getPit(Player.PLAYER_1.getBigPit()).getStones();
-        int p2Stones = game.getBoard().getPit(Player.PLAYER_2.getBigPit()).getStones();
+        var p1Stones = game.getBoard().getPit(Player.PLAYER_1.getBigPit()).getStones();
+        var p2Stones = game.getBoard().getPit(Player.PLAYER_2.getBigPit()).getStones();
 
         if (p1Stones > p2Stones) {
             game.setWinner(Player.PLAYER_1);

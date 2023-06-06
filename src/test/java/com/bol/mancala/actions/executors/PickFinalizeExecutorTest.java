@@ -39,7 +39,7 @@ public class PickFinalizeExecutorTest {
         assertEquals(game.getWinner(), Player.PLAYER_2);
         assertEquals(game.getState(), GameState.FINISHED);
 
-        for (Pit pit : game.getBoard().getPits()) {
+        for (var pit : game.getBoard().getPits()) {
             if (pit.getIndex() != Player.PLAYER_2.getBigPit()
                     || pit.getIndex() != Player.PLAYER_1.getBigPit()) {
                 continue;
