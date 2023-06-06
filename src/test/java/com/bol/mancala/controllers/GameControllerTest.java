@@ -57,7 +57,7 @@ public class GameControllerTest {
 
     @Test
     public void testPickApiWhenIdIsNotValid() throws Exception {
-        mockMvc.perform(put("/game/" + UUID.randomUUID().toString() + "/pick/1"))
+        mockMvc.perform(put("/game/" + UUID.randomUUID() + "/pick/1"))
                 .andExpect(status().isNotFound());
     }
 
