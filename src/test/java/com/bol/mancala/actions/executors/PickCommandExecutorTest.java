@@ -70,6 +70,29 @@ public class PickCommandExecutorTest {
     }
 
     @Test
+    public void testChangeTurnWhenLastTurnIsPlayer1() {
+        var game = new Game();
+        game.setTurn(Player.PLAYER_1);
+        game.getBoard().getPit(0).setStones(1);
+
+        executor.execute(game, 0);
+        assertNotEquals(game.getTurn(), Player.PLAYER_1);
+        assertEquals(game.getTurn(), Player.PLAYER_2);
+    }
+
+    @Test
+    public void testChangeTurnWhenLastTurnIsPlayer2() {
+        var game = new Game();
+        game.setTurn(Player.PLAYER_2);
+        game.getBoard().getPit(Player.PLAYER_1.getBigPit() + 1).setStones(1);
+
+        executor.execute(game, Player.PLAYER_1.getBigPit() + 1);
+        assertNotEquals(game.getTurn(), Player.PLAYER_2);
+        assertEquals(game.getTurn(), Player.PLAYER_1);
+    }
+
+
+    @Test
     public void testChangeTurnWhenLastIndexIsBigPit() {
         var game = new Game();
         game.getBoard().getPit(0).setStones(PIT_COUNT);

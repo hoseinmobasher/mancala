@@ -82,11 +82,21 @@ public class GameControllerTest {
     }
 
     @Test
-    public void testPikApiWhenBigPitSelected() throws Exception {
+    public void testPickApiWhenBigPitIsSelected() throws Exception {
         var game = gameService.create();
 
         mockMvc.perform(put("/game/" + game.getId().toString() + "/pick/" + (Player.PLAYER_1.getBigPit() + 1)))
                 .andExpect(status().isBadRequest())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Start from big pit is illegal."));
+    }
+
+    @Test
+    public void testPickApiWhenEmptyPitIsSelected() throws Exception {
+        var game = gameService.create();
+        game.getBoard().getPit(0).setStones(0);
+
+        mockMvc.perform(put("/game/" + game.getId().toString() + "/pick/1"))
+                .andExpect(status().isBadRequest())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("You can't choose a pit with no stone."));
     }
 }
