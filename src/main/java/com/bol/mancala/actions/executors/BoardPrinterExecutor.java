@@ -7,6 +7,9 @@ import lombok.extern.log4j.Log4j2;
 
 import static com.bol.mancala.domain.Board.PIT_TOTAL_COUNT;
 
+/**
+ * Print the current state of the given game.
+ */
 @Log4j2
 public class BoardPrinterExecutor implements Executor<Integer> {
     @Override

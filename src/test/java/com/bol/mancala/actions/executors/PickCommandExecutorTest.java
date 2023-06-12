@@ -30,10 +30,10 @@ public class PickCommandExecutorTest {
     @Test
     public void testSowStonesForOpponentBigPit() {
         Game game = new Game();
-        game.getBoard().getPit(5).setStones(14);
+        game.getBoard().getPit(PIT_COUNT - 1).setStones(14);
         var p2BigPitStones = game.getBoard().getPit(Player.PLAYER_2.getBigPit()).getStones();
 
-        executor.execute(game, 5);
+        executor.execute(game, PIT_COUNT - 1);
         assertEquals(game.getBoard().getPit(Player.PLAYER_2.getBigPit()).getStones(), p2BigPitStones);
     }
 

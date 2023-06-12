@@ -12,12 +12,30 @@ import java.util.UUID;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Game {
+    /**
+     * Each game includes a unique identifier (UUID).
+     */
     @EqualsAndHashCode.Include
     private final UUID id;
+
+    /**
+     * Each game played on a board.
+     */
     private final Board board;
 
+    /**
+     * State of the game which could be either IN_PROGRESS or FINISHED.
+     */
     private GameState state;
+
+    /**
+     * Which player should be played for current pick.
+     */
     private Player turn;
+
+    /**
+     * The winner of the game which will be determined in end of the game.
+     */
     private Player winner;
 
     public Game() {

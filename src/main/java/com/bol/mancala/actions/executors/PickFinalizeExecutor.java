@@ -8,6 +8,9 @@ import com.bol.mancala.domain.enumeration.GameState;
 import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * Finalize the pick action and determine winner and next state of the game.
+ */
 @Log4j2
 public class PickFinalizeExecutor implements Executor<Integer> {
     @Override

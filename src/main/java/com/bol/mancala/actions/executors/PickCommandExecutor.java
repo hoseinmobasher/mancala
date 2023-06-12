@@ -7,6 +7,13 @@ import com.bol.mancala.domain.Pit;
 import com.bol.mancala.domain.enumeration.Player;
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * Command which is used to handle the pick steps.
+ * Includes:
+ *  <li> sowStones: Pick the stones and sow them into the trajectory pits (counterclockwise). </li>
+ *  <li> captureStones: Consider If a player can capture the opponent's stones or not. </li>
+ *  <li> changeTurn: Determine next turn regarding the free turn rule. </li>
+ */
 @Log4j2
 public class PickCommandExecutor implements Executor<Integer> {
     @Override

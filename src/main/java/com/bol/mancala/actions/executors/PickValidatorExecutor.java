@@ -9,6 +9,11 @@ import com.bol.mancala.exceptions.types.IncorrectTurnException;
 import com.bol.mancala.exceptions.types.InvalidPitException;
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * Validate pick command of selected pit regarding the following rules:
+ * <li> Game should be in {@code GameState.IN_PROGRESS}. </li>
+ * <li> Big pit, empty pit, and opponent's pit could not be selected. </li>
+ */
 @Log4j2
 public class PickValidatorExecutor implements Executor<Integer> {
     @Override
